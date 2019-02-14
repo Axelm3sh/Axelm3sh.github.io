@@ -16,6 +16,10 @@
     background-color: inherit;
 }
 
+nav a {
+    background-color: #EEEBC2;
+}
+
 /******* animation code *********/
 @keyframes blueblush {
   from {color: blue;}
