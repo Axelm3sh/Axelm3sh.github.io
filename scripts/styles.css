@@ -7,27 +7,47 @@
 }
 
 html {
-    
+    margin: 10px;
+    background-color: lightgrey;
 }
 
 head {
-    
+/*    background-color: aliceblue;*/
+    padding: inherit;
 }
 
 body
 {
-    
+    background-color: cornsilk;
+    border: 2px dashed black;
+}
+
+div {
+    padding-left: 30px;
 }
 
 header {
-    
+    background-color: aliceblue;
+    padding: 10px;
 }
 
 footer {
-    
+    border: 2px solid black;
 }
 
 nav {
     
 }
 
+h1
+{
+    
+}
+
+h2{
+    
+}
+
+h3 {
+    
+}
