@@ -10,11 +10,18 @@
     
 }
 
+.cardlink {
+    height: 30px;
+    overflow: auto;
+    background-color: inherit;
+}
+
 /******* animation code *********/
 @keyframes blueblush {
   from {color: blue;}
   to {color: lavenderblush;}
 }
+
 nav a:hover
 {
     animation-name: blueblush;
