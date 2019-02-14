@@ -20,6 +20,11 @@ body
 {
     background-color: cornsilk;
     margin: 0 auto;
+    font-family: 'Cabin', sans-serif;
+}
+
+main {
+    padding: 15px;
 }
 
 div {
@@ -34,6 +39,7 @@ header {
 
 footer {
     border: 2px solid black;
+    padding: 5px;
 }
 
 ul {
