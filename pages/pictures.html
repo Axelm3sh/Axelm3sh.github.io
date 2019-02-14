@@ -6,37 +6,47 @@
     <title>Daniel's Personal Website - Pictures</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin|Staatliches" rel="stylesheet"> 
-    <link rel=stylesheet href="scripts/styles.css">
+    <link rel=stylesheet href="/scripts/styles.css">
+    <link rel="stylesheet" href="/scripts/customStyles.css">
 <!--    <img src="content/banner-image.jpg" alt="gears">-->
 </head>
 
 <body>
     <header>
-    <h1>CPSC 349 - Personal Webpage</h1><h1>Main Links</h1>
+    <h1 class="font-staatl">CPSC 349 - Daniel's Personal Webpage</h1><h1>Main Links</h1>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="course.html">Course Expectations</a>
+        <strong><a href="../index.html">Home</a></strong>
+        <strong><a href="course.html">Course Expectations</a></strong>
     </nav>
 </header>
     
-    <br>
-    <p>You're in for a treat because these are sneak peeks behind the scenes of my VR Multiplayer Co-op Shooter. It was made in Unreal Engine 4.</p>
-<!--testing
-    You came from a link!
-    Time to go <a href="../index.html">back</a>
--->
-    <img src="../content/beacon-mdl.jpg" alt="toss beacon"  height="200px" >
-    <section>One of our game mechanics introduces a tossable beacon that can call down drop pods at the impact point.</section>
-    <br>
-    
-    <img src="../content/energyRifletest.JPG" alt="energy rifle"  height="200px">
-    <section>This is one of our weapons which is literally an energy rifle. Endless bullets but you need to shake the weapon to recharge the energy. What a workout!</section>
-    <br>
-    
+    <div class="dark-style">
+        <br>
+            <section><p class="alt-para">You're in for a treat because these are sneak peeks behind the scenes of my VR Multiplayer Co-op Shooter. It was made in Unreal Engine 4.</p>
+        <!--testing
+            You came from a link!
+            Time to go <a href="../index.html">back</a>
+        --> 
+            <div>
+                <img src="../content/beacon-mdl.jpg" alt="toss beacon" >
+            </div>
+            <p class="alt-para">One of our game mechanics introduces a tossable beacon that can call down drop pods at the impact point.</p>
+            
 
-    <img src="../content/coloredOutlines.JPG" alt="fantastic outlines" height="200px" >
-    <section>This was a hard shader to code, basically at certain distances these outlines will fade from a visible x-ray outline to a visible outline that requires line of sight, anything further than a certain distance after that will slowly fade out to no outline.</section>
-    <br>    
+            <div>
+                <img src="../content/energyRifletest.JPG" alt="energy rifle"  >
+            </div>
+            <p class="alt-para">This is one of our weapons which is literally an energy rifle. Endless bullets but you need to shake the weapon to recharge the energy. What a workout!</p>
+            
+
+
+            <div>
+                <img src="../content/coloredOutlines.JPG" alt="fantastic outlines" >
+            </div>
+            <p class="alt-para">This was a hard shader to code, basically at certain distances these outlines will fade from a visible x-ray outline to a visible outline that requires line of sight, anything further than a certain distance after that will slowly fade out to no outline.</p>
+            </section>
+        <br>    
+    </div>
 <footer>Since your've seen all this, here's a <a href="https://axelm3sh.github.io/ProjectExercytusVR/">link</a> to our Work-In-Progress web page co-developed with a friend.
 </footer>
 </body>

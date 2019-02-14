@@ -1,0 +1,24 @@
+.dark-style
+{
+    background-color: #35383d;
+    color: lightyellow;
+}
+
+.alt-para:nth-of-type(odd) {
+    background-color: dimgrey;
+    color: lavender;
+    
+}
+
+/******* animation code *********/
+@keyframes blueblush {
+  from {color: blue;}
+  to {color: lavenderblush;}
+}
+nav a:hover
+{
+    animation-name: blueblush;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+}
