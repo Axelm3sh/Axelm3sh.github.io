@@ -5,8 +5,8 @@
 }
 
 .alt-para:nth-of-type(odd) {
-    background-color: dimgrey;
-    color: lavender;
+    background-color: inherit;
+    color: #FBFAF8;
     
 }
 
@@ -16,18 +16,35 @@
     background-color: inherit;
 }
 
-nav a {
-    background-color: #EEEBC2;
-/*    font-size: 2em;*/
+.color-schema
+{
+    overflow:hidden;
+    height: 35px;
+}
+
+.flex-nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
 }
 
 /******* animation code *********/
 @keyframes blueblush {
-  from {color: blue;}
-  to {color: lavenderblush;}
+  from {color: #EBF0F4;}
+  to {color: #406FBD;}
 }
 
 nav a:hover
+{
+    animation-name: blueblush;
+    animation-duration: 1s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: 2;
+}
+
+nav a:hover:visited
 {
     animation-name: blueblush;
     animation-duration: 1s;
