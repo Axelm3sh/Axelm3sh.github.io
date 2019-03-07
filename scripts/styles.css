@@ -1,8 +1,12 @@
-.font-staatl{
-    font-family: 'Staatliches', cursive;
-} /*google font*/
+@import url(https://fonts.googleapis.com/css?family=Cabin|Staatliches);
 
-.font-cabin{
+.font-staatl {
+    font-family: 'Staatliches', cursive;
+}
+
+/*google font*/
+
+.font-cabin {
     font-family: 'Cabin', sans-serif;
 }
 
@@ -12,25 +16,24 @@ html {
 }
 
 head {
-/*    background-color: aliceblue;*/
+    /*    background-color: aliceblue;*/
     padding: inherit;
 }
 
 /*BODY*/
-body
-{
+body {
     background-color: #406FBD;
     margin: 0 auto;
     font-family: 'Cabin', sans-serif;
 }
 
 body nav {
-    display:flex;
+    display: flex;
     flex-direction: column;
     background-color: #73A0AE;
     color: #EBF0F4;
     background-image: url("/content/banner-image.jpg");
-/*    font-size: 2em;*/
+    /*    font-size: 2em;*/
 }
 
 body nav a:visited {
@@ -55,7 +58,7 @@ body header {
 body footer {
     position: sticky;
     bottom: 30px;
-    
+
     background-color: #73A0AE;
     margin: auto;
     border: 2px solid black;
@@ -64,7 +67,7 @@ body footer {
 
 body ul {
     list-style-type: square;
-    
+
 }
 
 body ol {
@@ -74,20 +77,15 @@ body ol {
 
 /*END BODY*/
 
-h1{
-
-}
+h1 {}
 
 h2 {
     margin: 0 auto;
 }
 
-h3 {
-    
-}
+h3 {}
 
 body img {
     overflow: hidden;
     height: 300px;
 }
-
