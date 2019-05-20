@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Staatliches&display=swap');
+
+
+.font-staatl {
+    font-family: 'Staatliches', cursive;
+}
+
+body, .font-lato {
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    margin: 1em;
+}
+
+.cardlink {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+a.nav-link {
+    -webkit-transition: padding-left 0.2s ease-out;
+    -moz-transition: padding-left 0.2s ease-out;
+    transition: padding-left 0.2s ease-out;
+}
+
+a.nav-link:hover {
+    padding-left: 25px;
+}
