@@ -5,13 +5,24 @@
     font-family: 'Staatliches', cursive;
 }
 
-body, .font-lato {
+/*
+.font-lato {
     font-family: 'Lato', sans-serif;
 }
+*/
 
 body {
     margin: 1em;
+    font-family: 'Lato', sans-serif;
 }
+
+/*
+#sidebar {
+	height: 100%;
+    position: fixed;
+    overflow-x: hidden
+}
+*/
 
 .cardlink {
     max-width: 40px;
@@ -27,3 +38,4 @@ a.nav-link {
 a.nav-link:hover {
     padding-left: 25px;
 }
+
