@@ -13,16 +13,15 @@
 
 body {
     margin: 1em;
+/*    height: 100vh;*/
     font-family: 'Lato', sans-serif;
 }
 
-/*
 #sidebar {
 	height: 100%;
-    position: fixed;
-    overflow-x: hidden
+    position: sticky;
+    overflow-x: hidden;
 }
-*/
 
 .cardlink {
     max-width: 40px;
