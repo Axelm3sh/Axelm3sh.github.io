@@ -4,55 +4,113 @@
 <head>
     <meta charset="utf-8" lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CPSC 349 - Daniel's Personal Website</title>
+    <title>Daniel Phan's Website</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Cabin|Staatliches" rel="stylesheet">
-    <link rel="stylesheet" href="scripts/styles.css">
-    <link rel="stylesheet" href="/scripts/customStyles.css">
-
-    <!--    <img src="content/banner-image.jpg" alt="gears">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
-    <header>
-        <h1 class="font-staatl">CPSC 349 - Daniel's Personal Webpage</h1>
+    <header id="sidebar">
         <nav>
-            <h2>Main Links</h2>
-            <div class="flex-nav">
-                <strong><a href="pages/course.html">Course Expectations</a></strong>
-                <strong><a href="pages/pictures.html">Picture Showcase</a></strong>
+            <h1 class="font-staatl">Daniel Phan</h1>
+            <h3>Information Systems Major</h3>
+            <h4 class="border-bottom font-weight-light pl-3"><i>Computer Science Minor</i></h4>
+
+            <div class="border-bottom">
+                <strong>
+                    <a class="nav-link" href="#sectZero">Intro</a>
+                </strong>
+            </div>
+            <!--
+                <div class="border-bottom">
+                    <strong><a class="nav-link" href="#sectOne">Skills</a>
+                    </strong>
+                </div>
+-->
+            <div class="border-bottom">
+                <strong><a class="nav-link" href="#sectTwo">Work Experience</a>
+                </strong>
+            </div>
+            <div class="border-bottom">
+                <strong><a class="nav-link" href="#sectThree">Projects</a>
+                </strong>
+            </div>
+
+            <div><a href="https://github.com/Axelm3sh">
+                <strong class="text-light">Github Link </strong>
+                    <img class="cardlink" src="content/GitHub-Mark-Light-64px.png" alt="github mark">
+                </a>
             </div>
         </nav>
     </header>
-    <div>
-        <h2>Introductions</h2>
-        <p class="alt-para">Hello, my name is Daniel Phan.</p>
-        <p class="alt-para">I have a major in Business - Information Systems and a minor in Computer Science.</p>
-        <p class="alt-para">Typically on my spare time, I code and work on my side projects which include prototyping videogames with Unreal Engine.</p>
 
-        <p class="alt-para">I know coding languages including: </p>
-        <ul>
-            <li>C++</li>
-            <li>C#</li>
-            <li>Java</li>
-        </ul>
+    <div class="container-fluid outer">
+
+        <div id="mainContent" class="container-fluid row">
+            <div id="introduction" class="col-md-9">
+
+                <h2 id="sectZero"><strong>Introductions</strong></h2>
+                <section class="font-lato">
+                    <p>Hey! Welcome to my web page!</p>
+                    <p>I have a major in Business - Information Systems and a minor in Computer Science if that wasn't obvious enough.</p>
+                    <p>Typically on my spare time, I code and work on my side projects which include web design, programming, and creating game prototypes with Unreal Engine.</p>
+                </section>
+                <p>Here are some programming languages that I know: </p>
+                <ul>
+                    <li>C++</li>
+                    <li>C#</li>
+                    <li>Java <a class="text-info" href="http://ko-fi.com/axelm3sh" data-toggle="tooltip" data-placement="right" title="Want to buy me a coffee?"><span class="fa fa-coffee"></span></a></li>
+                    <li>JavaScript</li>
+                    <li>HTML+CSS <span class="font-weight-lighter"><i>obviously</i></span></li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-9">
+                <h2 id="sectTwo"><strong>Work Experience</strong></h2>
+                <section class="pl-3">
+                    <h5>Junior Web Developer (Student Assistant)</h5>
+                    <p>Maintained the Mihaylo Business College website using Microsoft Visual Studios, C#, JavaScript, HTML and CSS to update back-end database logic and front-end client-side visuals.</p>
+                </section>
+
+                <!--
+                <section class="pl-3">
+                    <h5>Title</h5>
+                    <p>Description stuff</p>
+                </section>
+-->
+
+            </div>
+
+            <div class="col-md-9">
+                <h2 id="sectThree"><strong>Current Projects</strong></h2>
+
+                <section class="pl-3">
+                    <h5>Project Exercytus</h5>
+                    <p>A Virtual Reality Cooperative Alien Horde Shooter where the players control autonomous robots that get sent off to different missions to investigate, gather, and reclaim resources for your captial ships. Their main adversaries are a mutating alien swarm which spread and overwhelm entire planets...</p>
+                </section>
+                
+
+            </div>
+
+
+        </div>
+
+
     </div>
 
-    <footer>
-        Github Link:
-        <a href="https://github.com/Axelm3sh">
-            <img class="cardlink" src="content/GitHub-Mark.jpg" alt="github mark">
-        </a>
+    <footer></footer>
 
-    </footer>
-    
-<!--    JS -->
+    <!--   Bootstrap JS Requirements-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+        $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        })</script>
 </body>
-
-
 
 </html>
