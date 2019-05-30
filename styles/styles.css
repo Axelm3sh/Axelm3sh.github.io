@@ -23,12 +23,18 @@ body {
     width: 25%;
     position: fixed;
     overflow-x: hidden;
+    box-shadow: 0px 6px;
 }
 
 #mainContent {
     padding-top: 4em;
 	margin-left: 25%;
     font-size: 1.2em;
+}
+
+.outer 
+{
+    overflow-x: hidden;
 }
 
 .cardlink {
