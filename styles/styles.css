@@ -10,41 +10,45 @@
 }
 
 body {
-/*    margin: 1em;*/
-/*    height: 100vh;*/
-/*    font-family: 'Lato', sans-serif;*/
+    /*    margin: 1em;*/
+    /*    height: 100vh;*/
+    /*    font-family: 'Lato', sans-serif;*/
 }
 
 #sidebar {
     background-color: #33576b;
     color: white;
     padding: 15px 0 0 1em;
-	height: 100%;
+    height: 100%;
     width: 25%;
     position: fixed;
     overflow-x: hidden;
     box-shadow: 0px 6px;
 }
 
+#timestamp {
+    padding: 5px;
+    bottom: 0;
+    position: fixed;
+}
+
 #mainContent {
-    padding-top: 4em;
-	margin-left: 25%;
+    padding: 3em 1em;
+    margin-left: 25%;
     font-size: 1.2em;
 }
 
-.outer 
-{
+.outer {
     overflow-x: hidden;
 }
 
 .cardlink {
-    padding: 4px;
+    padding: 6px;
     max-width: 40px;
     max-height: 40px;
 }
 
-.imageFit
-{
+.imageFit {
     max-height: 100%;
     max-width: 100%;
 }
@@ -58,4 +62,10 @@ a.nav-link {
 a.nav-link:hover {
     padding-left: 25px;
     background-color: white;
+}
+
+/*show more/less toggle*/
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+    display: none;
 }
