@@ -1,8 +1,4 @@
-# CPSC349
-Web-Development Front End class stuff
+# Personal showcase page
 
-Folder Structure
->>Content has stuff like documents, images, or files in general
->>Pages contain other html docs
->>Styles used for css styles
->>Scripts used for JavaScript
+Took what I learned in my Front-end development class and repurposed into a portfolio page
+which I'll try to keep updated and maybe try stuff out along the way.
