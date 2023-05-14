@@ -7,7 +7,7 @@
 /contentModel.xml
 /projectSettingsUpdater.xml
 /.idea.Axelm3sh.github.io.iml
-
+/.idea/
 # Editor-based HTTP Client requests
 /httpRequests/
 
@@ -18,3 +18,4 @@
 # React.js specific files
 node_modules/
 /build/
+
