@@ -1,0 +1,21 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Axelm3sh.github.io.iml
+/.idea/
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# React.js specific files
+node_modules/
+/build/
+
