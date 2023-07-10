@@ -1,0 +1,17 @@
+#mainContent {
+    padding: 3em 1em;
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 700px) {
+    #mainContent {
+        margin-left: 2%;
+        font-size: 1em;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    #mainContent {
+        margin-left: 25%;
+    }
+}
