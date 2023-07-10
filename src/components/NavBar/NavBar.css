@@ -5,23 +5,25 @@ header {
     width: 100%;
     padding: 0 10%;
     box-sizing: border-box;
+    background: #646cff; /* Change this to match your desired header color */
 }
 
 nav {
     width: 100%;
+    background: #646cff;
 }
 
 nav ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     list-style: none;   /* Removes list item dot */
     padding: 0;         /* Remove padding around ul */
 }
 
 nav ul li button {
-    background: white; /* Default color */
+    background: #646cff; /* Default color */
     border: none;
-    color: #333; /* Text color, adjust as needed */
+    color: white; /* Text color, adjust as needed */
     padding: 10px 20px;
     text-align: center;
     transition: background 0.3s ease; /* Transition effect */
@@ -38,5 +40,18 @@ nav ul li button:hover {
 }
 
 nav ul li button:active {
+    animation: flash 0.3s;
     background: #646cff; /* Color when button is clicked or active */
+}
+
+@keyframes flash {
+    0% {
+        background: linear-gradient(to bottom right, #61dafb 0%, #646cff 80%);
+    }
+    50% {
+        background: #61dafb
+    }
+    100% {
+        background: white;
+    }
 }
