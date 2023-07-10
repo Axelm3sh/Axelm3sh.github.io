@@ -1,0 +1,13 @@
+#backToTop {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    #backToTop {
+        display: block;
+        position: fixed;
+        bottom: 2%;
+        right: 2%;
+        padding: 5px;
+    }
+}
