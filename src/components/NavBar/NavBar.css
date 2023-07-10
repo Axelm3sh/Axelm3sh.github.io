@@ -31,12 +31,12 @@ nav ul li button {
 }
 
 nav ul li button:hover {
-    background: #ff7e5f; /* Fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #feb47b, #ff7e5f); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #feb47b, #ff7e5f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #61dafb; /* Fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom right, #61dafb 0%, #646cff 80%); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom right, #61dafb 0%, #646cff 80%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
 }
 
 nav ul li button:active {
-    background: #ff7e5f; /* Color when button is clicked or active */
+    background: #646cff; /* Color when button is clicked or active */
 }
