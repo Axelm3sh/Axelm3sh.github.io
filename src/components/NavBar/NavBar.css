@@ -1,0 +1,42 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+
+nav {
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;   /* Removes list item dot */
+    padding: 0;         /* Remove padding around ul */
+}
+
+nav ul li button {
+    background: white; /* Default color */
+    border: none;
+    color: #333; /* Text color, adjust as needed */
+    padding: 10px 20px;
+    text-align: center;
+    transition: background 0.3s ease; /* Transition effect */
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+nav ul li button:hover {
+    background: #ff7e5f; /* Fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #feb47b, #ff7e5f); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #feb47b, #ff7e5f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
+nav ul li button:active {
+    background: #ff7e5f; /* Color when button is clicked or active */
+}
