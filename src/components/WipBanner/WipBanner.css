@@ -49,11 +49,14 @@
 }
 
 .banner-area {
+    
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 274px;
+    /*max-height: 274px;*/
     width: 960px;
+    /*max-width: 960px;*/
 }
