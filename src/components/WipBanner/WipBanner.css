@@ -1,21 +1,16 @@
 .logo {
-    height: 6em;
+    height: 8em;
     padding: 1.5em;
     will-change: filter;
     transition: filter 300ms;
 }
 
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+.logo.vite:hover {
+    filter: drop-shadow(0 0 1em #646cff);
 }
 
-.logo.react{
-    position: relative;
-    left: -60px;
-    top: 50px;
-}
 .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 1em #61dafb);
 }
 
 @keyframes logo-spin {
@@ -40,23 +35,10 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    a .logo.animate-spin {
+    .logo.animate-spin {
         animation: logo-spin infinite 20s linear;
     }
-    a .logo.animate-float {
+    .logo.animate-float {
         animation: logo-float infinite 2s ease-in-out;
     }
-}
-
-.banner-area {
-    
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 274px;
-    /*max-height: 274px;*/
-    width: 960px;
-    /*max-width: 960px;*/
 }
