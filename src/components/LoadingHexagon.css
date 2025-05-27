@@ -1,0 +1,21 @@
+.loading-hexagon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* Ensure the SVG is centered and visible */
+.loading-hexagon-container svg {
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 5px var(--highlight)); /* Add a subtle glow effect to the hexagon */
+}
+
+/* Style for the slices to make them more distinct */
+.loading-hexagon-container svg path {
+  stroke: var(--text);
+  stroke-width: 0.5;
+  stroke-opacity: 0.3;
+}
