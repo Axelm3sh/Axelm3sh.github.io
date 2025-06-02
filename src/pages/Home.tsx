@@ -14,11 +14,11 @@ const Home = () => {
           <span className="highlight">Axelm3sh</span>
           <span className="subtitle">Portfolio & Blog</span>
         </h1>
-        
+
         <p className="hero-description">
           Welcome to my little frontier of digital space where I showcase my work, share my thoughts, and try things out.
         </p>
-        
+
         <div className="cta-buttons">
           <motion.a 
             href="#portfolio-section" 
@@ -48,11 +48,16 @@ const Home = () => {
         <h2>Featured Projects</h2>
         <div className="featured-grid">
           {/* Placeholder for featured projects */}
-          <div className="featured-item">
+          <a 
+            href="https://sack-of-storage.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="featured-item featured-item-link"
+          >
             <div className="featured-image placeholder"></div>
-            <h3>Project One</h3>
-            <p>A brief description of the project and technologies used.</p>
-          </div>
+            <h3>Sack of Storage</h3>
+            <p>Your Ultimate D&D Inventory Companion - Built with Vue 3 and TypeScript.</p>
+          </a>
           <div className="featured-item">
             <div className="featured-image placeholder"></div>
             <h3>Project Two</h3>
