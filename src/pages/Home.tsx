@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import DynamicGeometricPlaceholder from '../components/DynamicGeometricPlaceholder'
 import './Home.css'
 
 const Home = () => {
@@ -54,17 +55,38 @@ const Home = () => {
             rel="noopener noreferrer" 
             className="featured-item featured-item-link"
           >
-            <div className="featured-image placeholder"></div>
+            <div className="featured-image">
+              <DynamicGeometricPlaceholder 
+                size={140} 
+                enableHover={true}
+                changeInterval={3500}
+                shapes={[]}
+              />
+            </div>
             <h3>Sack of Storage</h3>
             <p>Your Ultimate D&D Inventory Companion - Built with Vue 3 and TypeScript.</p>
           </a>
           <div className="featured-item">
-            <div className="featured-image placeholder"></div>
+            <div className="featured-image">
+              <DynamicGeometricPlaceholder 
+                size={140} 
+                enableHover={true}
+                changeInterval={4200}
+                shapes={[]}
+              />
+            </div>
             <h3>Project Two</h3>
             <p>A brief description of the project and technologies used.</p>
           </div>
           <div className="featured-item">
-            <div className="featured-image placeholder"></div>
+            <div className="featured-image">
+              <DynamicGeometricPlaceholder 
+                size={140} 
+                enableHover={true}
+                changeInterval={3000}
+                shapes={[]} // Empty array to test random shape selection
+              />
+            </div>
             <h3>Project Three</h3>
             <p>A brief description of the project and technologies used.</p>
           </div>
