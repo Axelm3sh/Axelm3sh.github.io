@@ -1,8 +1,29 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import DynamicGeometricPlaceholder from '../components/DynamicGeometricPlaceholder'
+import scrambleText from '../utils/textScrambler'
 import './Home.css'
 
 const Home = () => {
+  const [highlightText, setHighlightText] = useState("hello world")
+
+  useEffect(() => {
+    // Start the text scrambling effect when component mounts
+    const scrambler = scrambleText({
+      finalText: "Hello World!",
+      duration: 1500, // Shorter duration for faster effect
+      scrambleSpeed: 30, // Faster scramble speed for more dynamic effect
+      onUpdate: (text) => setHighlightText(text),
+      onComplete: () => console.log("Scrambled eggs")
+    });
+
+    scrambler.start();
+
+    // Cleanup on unmount
+    return () => {
+      scrambler.stop();
+    };
+  }, []);
   return (
     <div className="home-container">
       <motion.div 
@@ -12,8 +33,8 @@ const Home = () => {
         transition={{ duration: 0.8 }}
       >
         <h1 className="hero-title">
-          <span className="highlight">Axelm3sh</span>
-          <span className="subtitle">Portfolio & Blog</span>
+          <span className="highlight">{highlightText}</span>
+          <span className="subtitle">(and I suppose robots too)</span>
         </h1>
 
         <p className="hero-description">
