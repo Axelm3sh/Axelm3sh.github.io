@@ -4,7 +4,7 @@ import { vi } from 'vitest';
 // Mock the import.meta.glob functionality used in blog.ts
 vi.mock('import.meta.glob', () => {
   return {
-    default: (path: string, options: Record<string, any>) => {
+    default: (path: string, _options: Record<string, any>) => {
       // Mock implementation for blog post files
       if (path === '/content/blog/*.md') {
         const mockFiles = {
@@ -53,10 +53,10 @@ This post has potentially dangerous frontmatter.`,
 });
 
 // Mock for ReactMarkdown to make testing easier
-vi.mock('react-markdown', () => {
-  const React = require('react');
+vi.mock('react-markdown', async () => {
+  const React = await import('react');
   return {
-    default: vi.fn(({ children, remarkPlugins }: { children: any, remarkPlugins?: any[] }) => {
+    default: vi.fn(({ children }: { children: any, _remarkPlugins?: any[] }) => {
       return React.createElement('div', { 'data-testid': 'markdown-content' }, children);
     }),
   };
