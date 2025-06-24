@@ -34,7 +34,7 @@ const Home = () => {
       >
         <h1 className="hero-title">
           <span className="highlight">{highlightText}</span>
-          <span className="subtitle">(and I suppose robots too)</span>
+          <span className="subtitle">(and I suppose hello robots too)</span>
         </h1>
 
         <p className="hero-description">

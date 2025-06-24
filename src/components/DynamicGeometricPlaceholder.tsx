@@ -30,7 +30,10 @@ const DynamicGeometricPlaceholder = ({
                                          shapes = ALL_SHAPES
                                      }: DynamicGeometricPlaceholderProps) => {
     const [isHovered, setIsHovered] = useState(false);
-    const [currentShapeIndex, setCurrentShapeIndex] = useState(0);
+    const [currentShapeIndex, setCurrentShapeIndex] = useState(() => {
+        // Initialize with a random index if using ALL_SHAPES
+        return shapes.length === 0 ? Math.floor(Math.random() * ALL_SHAPES.length) : 0;
+    });
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     // If shapes array is empty, use all available shapes
@@ -47,13 +50,24 @@ const DynamicGeometricPlaceholder = ({
 
             // After a brief transition delay, change the shape
             setTimeout(() => {
-                setCurrentShapeIndex((prevIndex) => (prevIndex + 1) % effectiveShapes.length);
+                if (shapes.length === 0) {
+                    // For empty shapes array, choose a random shape from ALL_SHAPES
+                    // Make sure we don't pick the same shape twice in a row
+                    const nextIndex = () => {
+                        const randomIndex = Math.floor(Math.random() * ALL_SHAPES.length);
+                        return randomIndex !== currentShapeIndex ? randomIndex : (randomIndex + 1) % ALL_SHAPES.length;
+                    };
+                    setCurrentShapeIndex(nextIndex());
+                } else {
+                    // Otherwise, cycle through the provided shapes
+                    setCurrentShapeIndex((prevIndex) => (prevIndex + 1) % effectiveShapes.length);
+                }
                 setIsTransitioning(false);
             }, 200);
         }, changeInterval);
 
         return () => clearInterval(interval);
-    }, [changeInterval, effectiveShapes.length]);
+    }, [changeInterval, effectiveShapes.length, shapes.length, currentShapeIndex]);
 
     // Generate points for different shapes
     const generateShapePoints = (shapeType: string) => {
