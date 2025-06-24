@@ -33,7 +33,7 @@ const Blog = () => {
 
   // Extract all unique tags from blog posts
   const allTags = Array.from(
-    new Set(blogPosts.flatMap(post => post.tags))
+    new Set(blogPosts.flatMap(post => post.tags || []))
   );
 
   if (loading) {
@@ -82,15 +82,15 @@ const Blog = () => {
                     <BannerHexTriangles />
                   </div>
                   <div className="blog-post-content">
-                    <h2>{post.title}</h2>
-                    <p className="blog-post-date">{formatDate(post.date)}</p>
+                    <h2 data-testid={`post-title-${post.slug}`}>{post.title}</h2>
+                    <p className="blog-post-date" data-testid={`post-date-${post.slug}`}>{formatDate(post.date)}</p>
                     <p className="blog-post-excerpt">{post.excerpt}</p>
                     <div className="blog-post-tags">
                       {post.tags.map((tag, i) => (
-                        <span key={i} className="blog-post-tag">{tag}</span>
+                        <span key={i} className="blog-post-tag" data-testid={`post-tag-${tag}`}>{tag}</span>
                       ))}
                     </div>
-                    <Link to={`/blog/${post.slug}`} className="blog-post-link">Read More</Link>
+                    <Link to={`/blog/${post.slug}`} className="blog-post-link" data-testid={`read-more-${post.slug}`}>Read More</Link>
                   </div>
                 </motion.article>
               ))}
@@ -116,7 +116,7 @@ const Blog = () => {
             <Divider width="70%" />
             <div className="tags-cloud">
               {allTags.map((tag, index) => (
-                <span key={index} className="tag">{tag}</span>
+                <span key={index} className="tag" data-testid={`tag-${tag}`}>{tag}</span>
               ))}
             </div>
           </div>

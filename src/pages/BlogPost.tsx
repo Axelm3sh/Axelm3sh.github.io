@@ -79,14 +79,14 @@ const BlogPost = () => {
         <Divider />
         <div className="blog-post-meta">
           <div className="blog-post-dates">
-            <span className="blog-post-date">Published: {formattedDate}</span>
+            <span className="blog-post-date" data-testid="blog-post-date">Published: {formattedDate}</span>
             {formattedLastUpdated && (
               <span className="blog-post-date">Last updated: {formattedLastUpdated}</span>
             )}
           </div>
           <div className="blog-post-tags">
             {post.tags.map((tag, index) => (
-              <span key={index} className="blog-post-tag">
+              <span key={index} className="blog-post-tag" data-testid={`post-tag-${tag}`}>
                 {tag}
               </span>
             ))}
@@ -100,7 +100,7 @@ const BlogPost = () => {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="blog-post-content"
       >
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+        <ReactMarkdown data-testid="markdown-content" remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </motion.div>
 
       <div className="blog-post-navigation">
