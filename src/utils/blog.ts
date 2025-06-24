@@ -76,7 +76,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       content: markdownContent,
     } as BlogPost;
   } catch (error) {
-    console.error(`Error getting post with slug ${slug}:`, error);
+    console.error('Error getting post with slug %s:', slug, error);
     return null;
   }
 }
