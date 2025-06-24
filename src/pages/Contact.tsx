@@ -52,9 +52,9 @@ const Contact = () => {
           <div className="info-item">
             <h3>Social Media</h3>
             <div className="social-links">
-              <Link to="https://github.com/Axelm3sh" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</Link>
-              <Link to="/not-found" className="social-link">LinkedIn</Link>
-              <Link to="/not-found" className="social-link">Twitter</Link>
+              <a href="https://github.com/Axelm3sh" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
+              <span className="social-link disabled" title="LinkedIn profile coming soon">LinkedIn</span>
+              <span className="social-link disabled" title="Twitter profile coming soon">X (Twitter)</span>
             </div>
           </div>
 

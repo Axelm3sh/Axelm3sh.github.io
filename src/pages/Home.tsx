@@ -75,22 +75,22 @@ const Home = () => {
         </p>
 
         <div className="cta-buttons">
-          <motion.a 
-            href="#portfolio-section" 
-            className="cta-button primary"
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View Portfolio
-          </motion.a>
-          <motion.a 
-            href="#about-section" 
-            className="cta-button secondary"
+            <Link to="/portfolio" className="cta-button primary">
+              View Portfolio
+            </Link>
+          </motion.div>
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            About Me
-          </motion.a>
+            <Link to="/about" className="cta-button secondary">
+              About Me
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
 

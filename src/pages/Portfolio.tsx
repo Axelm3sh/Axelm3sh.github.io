@@ -95,8 +95,8 @@ const Portfolio = () => {
                 ))}
               </div>
               <div className="project-links">
-                <a href="#" className="project-link">View Project</a>
-                <a href="#" className="project-link">Source Code</a>
+                <span className="project-link disabled" title="This is a placeholder project">View Project</span>
+                <a href="https://github.com/Axelm3sh" target="_blank" rel="noopener noreferrer" className="project-link">Source Code</a>
               </div>
             </div>
           </motion.div>
