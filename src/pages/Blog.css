@@ -9,7 +9,7 @@
 
 .blog-header h1 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--highlight);
 }
 
@@ -90,7 +90,8 @@
   display: inline-block;
   padding: 0.5rem 1rem;
   background-color: var(--highlight);
-  color: white;
+  color: white !important; /* Override any inherited link colors */
+  text-decoration: none !important; /* Ensure no underline from global link styles */
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.9rem;
@@ -101,6 +102,8 @@
 .blog-post-link:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--highlight-alt); /* Slightly darker version for hover state */
+  color: white !important; /* Ensure text remains white on hover */
 }
 
 /* Sidebar styles */
@@ -116,20 +119,15 @@
 
 .sidebar-section h3 {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--highlight);
   position: relative;
   display: inline-block;
 }
 
+/* Hide the after pseudo-element when using Divider component */
 .sidebar-section h3::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: var(--highlight);
+  display: none;
 }
 
 .category-list,
@@ -174,7 +172,7 @@
   .blog-content {
     grid-template-columns: 1fr;
   }
-  
+
   .blog-sidebar {
     margin-top: 2rem;
   }
@@ -184,7 +182,7 @@
   .blog-header h1 {
     font-size: 2rem;
   }
-  
+
   .blog-intro {
     font-size: 1rem;
   }

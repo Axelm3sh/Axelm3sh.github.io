@@ -28,7 +28,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Axelm3sh
+            Daniel Phan
           </motion.div>
         </Link>
 

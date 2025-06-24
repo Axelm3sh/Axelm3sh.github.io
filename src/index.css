@@ -4,13 +4,17 @@
 
 :root {
   --primary: #1a1a2e;
+  --primary-rgb: 26, 26, 46; /* RGB values of primary color */
   --secondary: #16213e;
   --accent: #0f3460;
   --highlight: #e94560;
+  --primary-color: #e94560; /* Alias for highlight for backward compatibility */
   --highlight-alt: #c73a51; /* Slightly darker version of highlight for isometric effect */
   --highlight-alt2: #a82e45; /* Third color for isometric cube effect */
   --text: #f5f5f5;
+  --text-color: #f5f5f5; /* Alias for text for backward compatibility */
   --text-secondary: #b8b8b8;
+  --bg-color: #1a1a2e; /* Alias for primary for backward compatibility */
 }
 
 * {

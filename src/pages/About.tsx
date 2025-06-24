@@ -1,4 +1,5 @@
 import {motion} from 'framer-motion'
+import Divider from '../components/Divider'
 import './About.css'
 
 const About = () => {
@@ -11,6 +12,7 @@ const About = () => {
                 transition={{duration: 0.8}}
             >
                 <h1>About Me</h1>
+                <Divider />
                 <p className="about-intro">
                     Hey, welcome to my (relatively) new revamped web page! My name is Daniel Phan, and typically in my
                     spare time I like working on side projects that include web apps, web design, programming, and
@@ -19,6 +21,7 @@ const About = () => {
 
                 <div className="about-section">
                     <h2>Skills</h2>
+                    <Divider width="30%" />
                     <div className="skills-grid">
                         <div className="skill-category">
                             <h3>Programming Languages</h3>
@@ -57,6 +60,7 @@ const About = () => {
 
                 <div className="about-section">
                     <h2>Background</h2>
+                    <Divider width="30%" />
                     <p>
                         I have a <strong>Masters in Information Technology</strong>, and completed my undergraduate with
                         a <strong>Major</strong> in <strong>Business - Information Systems</strong> with
@@ -66,6 +70,7 @@ const About = () => {
 
                 <div className="about-section">
                     <h2>Work Experience</h2>
+                    <Divider width="30%" />
                     <p><strong>Junior Web Developer (Student Assistant)</strong></p>
                     <p>Maintained the Mihaylo Business College website using Microsoft Visual Studios, C#, JavaScript,
                         HTML and CSS to update back-end database logic and front-end client-side visuals.</p>
@@ -73,10 +78,11 @@ const About = () => {
 
                 <div className="about-section">
                     <h2>Interests</h2>
+                    <Divider width="30%" />
                     <p>
                         Coffee and coffee-related activities. I also enjoy playing
-                        video games about coffee, reading coffee, and
-                        learning new things about coffee. Did I mention coffee? Also
+                        video games, reading, and
+                        learning new things about technology. I'm also passionate about
                         music.
                     </p>
                 </div>

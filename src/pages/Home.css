@@ -75,21 +75,16 @@
 }
 
 .featured-section h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   font-size: 2rem;
   color: var(--highlight);
   position: relative;
   display: inline-block;
 }
 
+/* Hide the after pseudo-element when using Divider component */
 .featured-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--highlight);
+  display: none;
 }
 
 .featured-grid {
@@ -152,21 +147,16 @@
 }
 
 .blog-preview-section h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   font-size: 2rem;
   color: var(--highlight);
   position: relative;
   display: inline-block;
 }
 
+/* Hide the after pseudo-element when using Divider component */
 .blog-preview-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--highlight);
+  display: none;
 }
 
 .blog-preview-grid {

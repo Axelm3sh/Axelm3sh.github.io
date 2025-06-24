@@ -16,4 +16,8 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: true,
   },
+  define: {
+    // Provide a polyfill for Buffer
+    global: {},
+  },
 })

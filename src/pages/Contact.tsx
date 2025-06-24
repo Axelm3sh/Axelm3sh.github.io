@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import Divider from '../components/Divider'
 import './Contact.css'
 
 const Contact = () => {
@@ -13,8 +14,9 @@ const Contact = () => {
         className="contact-header"
       >
         <h1>Contact</h1>
+        <Divider />
         <p className="contact-intro">
-          This is a placeholder for the Contact page.
+          Feel free to reach out to me through any of the channels below.
         </p>
       </motion.div>
 
@@ -26,6 +28,7 @@ const Contact = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <h2>Send a Message</h2>
+          <Divider width="70%" />
           <div className="message-disabled">
             <p>The message functionality is currently disabled.</p>
             <p>Please use the provided contact information to get in touch.</p>
@@ -39,6 +42,7 @@ const Contact = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <h2>Contact Information</h2>
+          <Divider width="70%" />
 
           <div className="info-item">
             <h3>Email</h3>
@@ -48,15 +52,15 @@ const Contact = () => {
           <div className="info-item">
             <h3>Social Media</h3>
             <div className="social-links">
-              <Link to="/not-found" className="social-link">GitHub</Link>
-              <Link to="/not-found" className="social-link">LinkedIn</Link>
-              <Link to="/not-found" className="social-link">Twitter</Link>
+              <a href="https://github.com/Axelm3sh" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
+              <span className="social-link disabled" title="LinkedIn profile coming soon">LinkedIn</span>
+              <span className="social-link disabled" title="Twitter profile coming soon">X (Twitter)</span>
             </div>
           </div>
 
           <div className="info-item">
             <h3>Location</h3>
-            <p>Interneet</p>
+            <p>California, USA</p>
           </div>
         </motion.div>
       </div>
