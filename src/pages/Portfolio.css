@@ -54,6 +54,19 @@
   gap: 2rem;
 }
 
+.portfolio-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.portfolio-loading {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .project-card {
   overflow: hidden;
   display: flex;
@@ -135,15 +148,15 @@
   .portfolio-header h1 {
     font-size: 2rem;
   }
-  
+
   .portfolio-intro {
     font-size: 1rem;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .project-links {
     flex-direction: column;
   }
