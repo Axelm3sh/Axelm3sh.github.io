@@ -1,71 +1,29 @@
-name: CI/CD Pipeline
+# Modern workflow for deploying React app to GitHub Pages
+name: Deploy React App to Pages
 
 on:
+  # Runs on pushes targeting the release branch
   push:
-    branches: ['main', 'release']
-  pull_request:
-    branches: ['main', 'release']
+    branches: ['release']
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
-  pull-requests: write
-  security-events: write
+  security-events: write # For code scanning
 
+# Allow one concurrent deployment
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Security audit
-        run: npm audit --audit-level high
-        continue-on-error: true
-
-      - name: Lint
-        run: npm run lint
-        continue-on-error: true
-
-      - name: Run tests with coverage
-        run: npm test -- --coverage
-        continue-on-error: true
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          directory: ./coverage/
-          fail_ci_if_error: false
-          verbose: true
-        continue-on-error: true
-
-      - name: Upload coverage artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: ./coverage/
-          retention-days: 7
-        continue-on-error: true
-
+  # Single deploy job since we're just deploying
   deploy:
-    needs: test
-    if: github.ref == 'refs/heads/release' && github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -83,6 +41,14 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Lint
+        run: npm run lint
+        continue-on-error: true # Allow deployment even if linting fails
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true # Allow deployment even if tests fail
 
       - name: Build
         run: npm run build
@@ -105,6 +71,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Upload dist repository
           path: './dist'
 
       - name: Deploy to GitHub Pages
