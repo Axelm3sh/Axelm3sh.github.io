@@ -112,7 +112,8 @@ const BannerHexTriangles: React.FC<BannerHexTrianglesProps> = ({
           // Calculate a pulse effect based on position and wave phase
           const distance = Math.sqrt(Math.pow(row - ROWS/2, 2) + Math.pow(col - COLS/2, 2));
           const pulseValue = Math.sin(distance * 0.5 + wavePhase) * 0.5 + 0.5;
-          const isPulsing = pulseValue > 0.7;
+          // Use pulseIntensity to control the threshold for pulsing
+          const isPulsing = pulseValue > (1 - pulseIntensity);
 
           // Determine if this hex should use gradient or solid color
           const shouldGradient = (row + col) % 2 === 0;

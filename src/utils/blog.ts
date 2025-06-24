@@ -13,7 +13,20 @@ export interface BlogPost {
 
 // Use Vite's import.meta.glob to get all markdown files
 // This is a Vite-specific feature that works in the browser
-const blogFiles = import.meta.glob('/content/blog/*.md', { eager: true, as: 'raw' });
+const defaultBlogFiles = import.meta.glob('/content/blog/*.md', { eager: true, query: '?raw', import: 'default' });
+
+// For testing purposes, allow blog files to be injected
+let blogFiles = defaultBlogFiles;
+
+// Export a function to set blog files for testing
+export function setBlogFiles(files: Record<string, string>) {
+  blogFiles = files;
+}
+
+// Export a function to reset blog files to default
+export function resetBlogFiles() {
+  blogFiles = defaultBlogFiles;
+}
 
 /**
  * Get all blog posts metadata
@@ -58,8 +71,10 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const filePath = `/content/blog/${slug}.md`;
     const content = blogFiles[filePath] as string;
 
+    // If the post doesn't exist, return null without throwing an error
     if (!content) {
-      throw new Error(`Blog post with slug "${slug}" not found`);
+      console.error(`Blog post with slug %s not found`, slug);
+      return null;
     }
 
     // Use gray-matter to parse the post metadata section
