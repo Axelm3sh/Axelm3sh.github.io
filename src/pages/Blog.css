@@ -9,7 +9,7 @@
 
 .blog-header h1 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--highlight);
 }
 
@@ -116,20 +116,15 @@
 
 .sidebar-section h3 {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--highlight);
   position: relative;
   display: inline-block;
 }
 
+/* Hide the after pseudo-element when using Divider component */
 .sidebar-section h3::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: var(--highlight);
+  display: none;
 }
 
 .category-list,
@@ -174,7 +169,7 @@
   .blog-content {
     grid-template-columns: 1fr;
   }
-  
+
   .blog-sidebar {
     margin-top: 2rem;
   }
@@ -184,7 +179,7 @@
   .blog-header h1 {
     font-size: 2rem;
   }
-  
+
   .blog-intro {
     font-size: 1rem;
   }

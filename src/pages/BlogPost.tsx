@@ -5,6 +5,8 @@ import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
 import { getPostBySlug, BlogPost as BlogPostType } from '../utils/blog';
 import BannerHexTriangles from '../components/BannerHexTriangles';
+import LoadingTemplate from '../components/LoadingTemplate';
+import Divider from '../components/Divider';
 import './BlogPost.css';
 
 const BlogPost = () => {
@@ -35,7 +37,7 @@ const BlogPost = () => {
   }, [slug, navigate]);
 
   if (loading) {
-    return <div className="blog-post-loading">Loading...</div>;
+    return <LoadingTemplate message="Loading blog post..." className="blog-post-loading" />;
   }
 
   if (!post) {
@@ -65,6 +67,7 @@ const BlogPost = () => {
         className="blog-post-header"
       >
         <h1>{post.title}</h1>
+        <Divider />
         <div className="blog-post-meta">
           <span className="blog-post-date">{formattedDate}</span>
           <div className="blog-post-tags">

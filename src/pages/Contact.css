@@ -35,21 +35,16 @@
 .contact-form-container h2,
 .contact-info h2 {
   font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   color: var(--highlight);
   position: relative;
   display: inline-block;
 }
 
+/* Hide the after pseudo-element when using Divider component */
 .contact-form-container h2::after,
 .contact-info h2::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background-color: var(--highlight);
+  display: none;
 }
 
 /* Form styles */
@@ -141,7 +136,7 @@
 
 .info-item h3 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   color: var(--text);
 }
 

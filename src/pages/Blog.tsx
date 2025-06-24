@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllPosts, BlogPost as BlogPostType } from '../utils/blog'
 import BannerHexTriangles from '../components/BannerHexTriangles'
+import LoadingTemplate from '../components/LoadingTemplate'
+import Divider from '../components/Divider'
 import './Blog.css'
 
 const Blog = () => {
@@ -37,7 +39,7 @@ const Blog = () => {
   if (loading) {
     return (
       <div className="blog-container">
-        <div className="blog-loading">Loading blog posts...</div>
+        <LoadingTemplate message="Loading blog posts..." />
       </div>
     );
   }
@@ -51,6 +53,7 @@ const Blog = () => {
         className="blog-header"
       >
         <h1>Blog</h1>
+        <Divider />
         <p className="blog-intro">
           Welcome to my blog! Here I share my thoughts and experiences on web development, design, and technology.
         </p>
@@ -98,6 +101,7 @@ const Blog = () => {
         <aside className="blog-sidebar">
           <div className="sidebar-section card">
             <h3>Recent Posts</h3>
+            <Divider width="70%" />
             <ul className="recent-posts-list">
               {blogPosts.slice(0, 3).map(post => (
                 <li key={post.slug}>
@@ -109,6 +113,7 @@ const Blog = () => {
 
           <div className="sidebar-section card">
             <h3>Tags</h3>
+            <Divider width="70%" />
             <div className="tags-cloud">
               {allTags.map((tag, index) => (
                 <span key={index} className="tag">{tag}</span>

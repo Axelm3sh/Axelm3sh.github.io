@@ -1,11 +1,17 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import DynamicGeometricPlaceholder from '../components/DynamicGeometricPlaceholder'
 import scrambleText from '../utils/textScrambler'
+import { getAllPosts, BlogPost as BlogPostType } from '../utils/blog'
+import LoadingTemplate from '../components/LoadingTemplate'
+import Divider from '../components/Divider'
 import './Home.css'
 
 const Home = () => {
   const [highlightText, setHighlightText] = useState("hello world")
+  const [blogPosts, setBlogPosts] = useState<BlogPostType[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Start the text scrambling effect when component mounts
@@ -24,6 +30,33 @@ const Home = () => {
       scrambler.stop();
     };
   }, []);
+
+  useEffect(() => {
+    try {
+      const posts = getAllPosts()
+      setBlogPosts(posts)
+    } catch (error) {
+      console.error('Error loading blog posts:', error)
+    } finally {
+      setLoading(false)
+    }
+  }, []);
+
+  // Format date for display
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  // Truncate text after a certain number of characters
+  const truncateText = (text: string, maxLength: number = 100) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + '...';
+  };
+
   return (
     <div className="home-container">
       <motion.div 
@@ -68,8 +101,8 @@ const Home = () => {
         transition={{ delay: 0.4, duration: 0.8 }}
       >
         <h2>Featured Projects</h2>
+        <Divider />
         <div className="featured-grid">
-          {/* Placeholder for featured projects */}
           <a 
             href="https://sack-of-storage.vercel.app/" 
             target="_blank" 
@@ -87,30 +120,6 @@ const Home = () => {
             <h3>Sack of Storage</h3>
             <p>Your Ultimate D&D Inventory Companion - Built with Vue 3 and TypeScript.</p>
           </a>
-          <div className="featured-item">
-            <div className="featured-image">
-              <DynamicGeometricPlaceholder 
-                size={140} 
-                enableHover={true}
-                changeInterval={4200}
-                shapes={[]}
-              />
-            </div>
-            <h3>Project Two</h3>
-            <p>A brief description of the project and technologies used.</p>
-          </div>
-          <div className="featured-item">
-            <div className="featured-image">
-              <DynamicGeometricPlaceholder 
-                size={140} 
-                enableHover={true}
-                changeInterval={3000}
-                shapes={[]} // Empty array to test random shape selection
-              />
-            </div>
-            <h3>Project Three</h3>
-            <p>A brief description of the project and technologies used.</p>
-          </div>
         </div>
       </motion.div>
 
@@ -121,20 +130,28 @@ const Home = () => {
         transition={{ delay: 0.6, duration: 0.8 }}
       >
         <h2>Latest Blog Posts</h2>
+        <Divider />
         <div className="blog-preview-grid">
-          {/* Placeholder for blog posts */}
-          <div className="blog-preview-item">
-            <h3>Blog Post Title</h3>
-            <p className="blog-date">May 26, 2025</p>
-            <p>A brief excerpt from the blog post that gives readers an idea of what it's about.</p>
-            <a href="#" className="read-more">Read More</a>
-          </div>
-          <div className="blog-preview-item">
-            <h3>Another Blog Post</h3>
-            <p className="blog-date">May 20, 2025</p>
-            <p>A brief excerpt from lorem ipsum</p>
-            <a href="#" className="read-more">Read More</a>
-          </div>
+          {loading ? (
+            <LoadingTemplate message="Loading blog posts..." />
+          ) : blogPosts.length === 0 ? (
+            <div className="no-posts">No blog posts found.</div>
+          ) : (
+            blogPosts.slice(0, 3).map((post, index) => (
+              <motion.div 
+                key={post.slug}
+                className="blog-preview-item"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+              >
+                <h3>{post.title}</h3>
+                <p className="blog-date">{formatDate(post.date)}</p>
+                <p>{truncateText(post.excerpt, 100)}</p>
+                <Link to={`/blog/${post.slug}`} className="read-more">Read More</Link>
+              </motion.div>
+            ))
+          )}
         </div>
       </motion.div>
     </div>
