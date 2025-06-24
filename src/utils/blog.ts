@@ -5,6 +5,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string;
+  lastUpdated?: string; // Optional field for the last update date
   excerpt: string;
   tags: string[];
   content: string;
@@ -31,6 +32,7 @@ export function getAllPosts(): BlogPost[] {
       slug,
       title: data.title,
       date: data.date,
+      lastUpdated: data.lastUpdated,
       excerpt: data.excerpt,
       tags: data.tags || [],
       content: markdownContent,
@@ -68,6 +70,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       slug,
       title: data.title,
       date: data.date,
+      lastUpdated: data.lastUpdated,
       excerpt: data.excerpt,
       tags: data.tags || [],
       content: markdownContent,

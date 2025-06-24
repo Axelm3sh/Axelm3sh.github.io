@@ -41,6 +41,12 @@
   color: var(--text-secondary);
 }
 
+.blog-post-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
 .blog-post-date {
   font-style: italic;
 }

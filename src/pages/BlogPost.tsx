@@ -50,6 +50,15 @@ const BlogPost = () => {
     day: 'numeric',
   });
 
+  // Format the last updated date if it exists
+  const formattedLastUpdated = post.lastUpdated 
+    ? new Date(post.lastUpdated).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : null;
+
   return (
     <div className="blog-post-container">
       <motion.div
@@ -69,7 +78,12 @@ const BlogPost = () => {
         <h1>{post.title}</h1>
         <Divider />
         <div className="blog-post-meta">
-          <span className="blog-post-date">{formattedDate}</span>
+          <div className="blog-post-dates">
+            <span className="blog-post-date">Published: {formattedDate}</span>
+            {formattedLastUpdated && (
+              <span className="blog-post-date">Last updated: {formattedLastUpdated}</span>
+            )}
+          </div>
           <div className="blog-post-tags">
             {post.tags.map((tag, index) => (
               <span key={index} className="blog-post-tag">
