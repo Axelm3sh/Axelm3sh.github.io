@@ -219,7 +219,7 @@
 
   .cta-buttons {
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
   }
 
   .featured-grid,
