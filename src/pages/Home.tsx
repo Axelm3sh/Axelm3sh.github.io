@@ -93,7 +93,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="featured-item"
             >
-              <Halftone size="sm" color="blush" />
+              <Halftone size="sm" color="blush" pattern={"crosshatch"} />
               <div className="featured-image">
                 <span className="featured-emoji">🎒</span>
               </div>
@@ -126,6 +126,7 @@ const Home = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                 >
+                  <Halftone size="lg" color="cyan" opacity={0.35} angle={30} />
                   <h3>{post.title}</h3>
                   <p className="blog-date">{formatDate(post.date)}</p>
                   <p>{truncateText(post.excerpt, 100)}</p>
