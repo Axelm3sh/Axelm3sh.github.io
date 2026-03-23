@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
 import { getPostBySlug, BlogPost as BlogPostType } from '../utils/blog';
-import BannerHexTriangles from '../components/BannerHexTriangles';
+import WindowChrome from '../components/WindowChrome';
 import LoadingTemplate from '../components/LoadingTemplate';
 import Divider from '../components/Divider';
 import './BlogPost.css';
@@ -50,8 +50,7 @@ const BlogPost = () => {
     day: 'numeric',
   });
 
-  // Format the last updated date if it exists
-  const formattedLastUpdated = post.lastUpdated 
+  const formattedLastUpdated = post.lastUpdated
     ? new Date(post.lastUpdated).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -62,17 +61,9 @@ const BlogPost = () => {
   return (
     <div className="blog-post-container">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="blog-post-banner"
-      >
-        <BannerHexTriangles />
-      </motion.div>
-      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        transition={{ duration: 0.8 }}
         className="blog-post-header"
       >
         <h1>{post.title}</h1>
@@ -98,14 +89,17 @@ const BlogPost = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="blog-post-content"
       >
-        <ReactMarkdown data-testid="markdown-content" remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+        <WindowChrome title={`${slug}.md`} className="blog-post-article">
+          <div className="blog-post-content">
+            <ReactMarkdown data-testid="markdown-content" remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+          </div>
+        </WindowChrome>
       </motion.div>
 
       <div className="blog-post-navigation">
         <button onClick={() => navigate('/blog')} className="back-to-blog-button">
-          ← Back to Blog
+          &larr; Back to Blog
         </button>
       </div>
     </div>
