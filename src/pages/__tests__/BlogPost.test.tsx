@@ -51,7 +51,7 @@ describe('BlogPost Component', () => {
 
     // Check that the date is formatted and rendered
     const dateElement = screen.getByTestId('blog-post-date');
-    expect(dateElement).toHaveTextContent('Published: June 17, 2025');
+    expect(dateElement).toHaveTextContent('Published: June 18, 2025');
 
     // Check that tags are rendered
     expect(screen.getByText('Web Development')).toBeInTheDocument();

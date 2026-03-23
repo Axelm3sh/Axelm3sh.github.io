@@ -44,14 +44,15 @@ const BlogPost = () => {
     return null;
   }
 
-  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+  // Append T00:00:00 so date-only strings parse as local time, not UTC
+  const formattedDate = new Date(post.date + 'T00:00:00').toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 
   const formattedLastUpdated = post.lastUpdated
-    ? new Date(post.lastUpdated).toLocaleDateString('en-US', {
+    ? new Date(post.lastUpdated + 'T00:00:00').toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
