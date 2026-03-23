@@ -14,10 +14,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true,
-  },
-  define: {
-    // Provide a polyfill for Buffer
-    global: {},
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'framer': ['framer-motion'],
+          'markdown': ['react-markdown', 'remark-gfm'],
+        },
+      },
+    },
   },
 })

@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import MatrixBackground from './components/MatrixBackground'
+import HalftoneOverlay from './components/HalftoneOverlay'
+import DecorativeShapes from './components/DecorativeShapes'
+import BouncyBeachBall from './components/BouncyBeachBall'
 import Navbar from './components/Navbar'
-import LoadingHexagon from './components/LoadingHexagon'
 import Home from './pages/Home'
 import About from './pages/About'
 import Portfolio from './pages/Portfolio'
@@ -15,10 +16,9 @@ import './App.css'
 
 function App() {
   const [loading, setLoading] = useState(true)
-  const LOADING_DURATION = 2000;
+  const LOADING_DURATION = 3500;
 
   useEffect(() => {
-    // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false)
     }, LOADING_DURATION)
@@ -27,23 +27,25 @@ function App() {
 
   if (loading) {
     return (
-        <div className="loading-screen">
-          <motion.div
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              transition={{duration: 0.5}}
-              className="loading-content"
-          >
-            <h1>Loading...</h1>
-            <LoadingHexagon duration={LOADING_DURATION / 1000}/>
-          </motion.div>
-        </div>
+      <div className="loading-screen">
+        <HalftoneOverlay />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="loading-content"
+        >
+          <h1>Loading...</h1>
+        </motion.div>
+        <BouncyBeachBall duration={1.8} />
+      </div>
     )
   }
 
   return (
     <div className="app">
-      <MatrixBackground />
+      <HalftoneOverlay />
+      <DecorativeShapes />
       <div className="content">
         <Navbar />
         <main>
@@ -58,7 +60,7 @@ function App() {
           </Routes>
         </main>
         <footer>
-          <p>© 2019-{new Date().getFullYear()} Daniel Phan. All rights reserved.</p>
+          <p>&copy; 2019-{new Date().getFullYear()} Daniel Phan. All rights reserved.</p>
         </footer>
       </div>
     </div>

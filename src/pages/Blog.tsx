@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllPosts, BlogPost as BlogPostType } from '../utils/blog'
-import BannerHexTriangles from '../components/BannerHexTriangles'
+import WindowChrome from '../components/WindowChrome'
+import GlassPanel from '../components/GlassPanel'
 import LoadingTemplate from '../components/LoadingTemplate'
 import Divider from '../components/Divider'
 import './Blog.css'
@@ -22,7 +23,6 @@ const Blog = () => {
     }
   }, [])
 
-  // Format date for display
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -31,7 +31,6 @@ const Blog = () => {
     });
   };
 
-  // Extract all unique tags from blog posts
   const allTags = Array.from(
     new Set(blogPosts.flatMap(post => post.tags || []))
   );
@@ -64,34 +63,32 @@ const Blog = () => {
           {blogPosts.length === 0 ? (
             <div className="no-posts">No blog posts found.</div>
           ) : (
-            <motion.div 
+            <motion.div
               className="blog-posts"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               {blogPosts.map((post, index) => (
-                <motion.article 
+                <motion.article
                   key={post.slug}
-                  className="blog-post card"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index, duration: 0.5 }}
                 >
-                  <div className="blog-post-image">
-                    <BannerHexTriangles />
-                  </div>
-                  <div className="blog-post-content">
-                    <h2 data-testid={`post-title-${post.slug}`}>{post.title}</h2>
-                    <p className="blog-post-date" data-testid={`post-date-${post.slug}`}>{formatDate(post.date)}</p>
-                    <p className="blog-post-excerpt">{post.excerpt}</p>
-                    <div className="blog-post-tags">
-                      {post.tags.map((tag, i) => (
-                        <span key={i} className="blog-post-tag" data-testid={`post-tag-${tag}`}>{tag}</span>
-                      ))}
+                  <WindowChrome title={`${post.slug}.md`} className="blog-post-card">
+                    <div className="blog-post-content">
+                      <h2 data-testid={`post-title-${post.slug}`}>{post.title}</h2>
+                      <p className="blog-post-date" data-testid={`post-date-${post.slug}`}>{formatDate(post.date)}</p>
+                      <p className="blog-post-excerpt">{post.excerpt}</p>
+                      <div className="blog-post-tags">
+                        {post.tags.map((tag, i) => (
+                          <span key={i} className="blog-post-tag" data-testid={`post-tag-${tag}`}>{tag}</span>
+                        ))}
+                      </div>
+                      <Link to={`/blog/${post.slug}`} className="blog-post-link" data-testid={`read-more-${post.slug}`}>Read More</Link>
                     </div>
-                    <Link to={`/blog/${post.slug}`} className="blog-post-link" data-testid={`read-more-${post.slug}`}>Read More</Link>
-                  </div>
+                  </WindowChrome>
                 </motion.article>
               ))}
             </motion.div>
@@ -99,7 +96,7 @@ const Blog = () => {
         </div>
 
         <aside className="blog-sidebar">
-          <div className="sidebar-section card">
+          <GlassPanel className="sidebar-section">
             <h3>Recent Posts</h3>
             <Divider width="70%" />
             <ul className="recent-posts-list">
@@ -109,9 +106,9 @@ const Blog = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </GlassPanel>
 
-          <div className="sidebar-section card">
+          <GlassPanel className="sidebar-section">
             <h3>Tags</h3>
             <Divider width="70%" />
             <div className="tags-cloud">
@@ -119,7 +116,7 @@ const Blog = () => {
                 <span key={index} className="tag" data-testid={`tag-${tag}`}>{tag}</span>
               ))}
             </div>
-          </div>
+          </GlassPanel>
         </aside>
       </div>
     </div>

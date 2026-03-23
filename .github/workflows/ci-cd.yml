@@ -14,7 +14,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  security-events: write # For code scanning
 
 # Allow one concurrent deployment
 concurrency:
@@ -42,13 +41,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
-        continue-on-error: true # Allow deployment even if linting fails
-
       - name: Run tests
         run: npm test
-        continue-on-error: true # Allow deployment even if tests fail
 
       - name: Build
         run: npm run build

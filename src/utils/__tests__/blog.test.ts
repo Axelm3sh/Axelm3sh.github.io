@@ -144,12 +144,8 @@ This post doesn't have any tags.`
       expect(post).toBeNull();
     });
 
-    it('handles errors gracefully', () => {
-      // Mock console.error to prevent test output pollution
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-      // Set up a post that will cause an error when parsed by gray-matter
-      // This is a malformed YAML frontmatter that will cause gray-matter to throw an error
+    it('handles malformed frontmatter gracefully', () => {
+      // Set up a post with malformed YAML frontmatter (unclosed quotes)
       setBlogFiles({
         ...testBlogFiles,
         '/content/blog/error-post.md': `---
@@ -160,19 +156,15 @@ excerpt: "This post has invalid frontmatter.
 
 # Error Post
 
-This post has invalid frontmatter that will cause gray-matter to throw an error.`
+This post has invalid frontmatter.`
       });
 
+      // The lightweight parser should still return a post (parsing what it can)
       const post = getPostBySlug('error-post');
-
-      // Check that null is returned when an error occurs
-      expect(post).toBeNull();
-
-      // Check that the error was logged
-      expect(consoleErrorSpy).toHaveBeenCalled();
-
-      // Restore console.error
-      consoleErrorSpy.mockRestore();
+      expect(post).not.toBeNull();
+      // date should parse correctly since it's a simple unquoted value
+      expect(post?.date).toBe('2025-06-20');
+      expect(post?.content).toContain('# Error Post');
     });
   });
 
