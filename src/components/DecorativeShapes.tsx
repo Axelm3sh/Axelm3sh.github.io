@@ -1,33 +1,45 @@
+import { useRef } from 'react'
 import './DecorativeShapes.css'
 
-const shapes = [
-  // circles
-  { type: 'circle', color: '#E97BAD', size: 18, top: '5%', left: '8%', rotate: 5, delay: 0 },
-  { type: 'circle', color: '#F5A47A', size: 14, top: '75%', left: '90%', rotate: -8, delay: -2 },
-  { type: 'circle', color: '#7261B8', size: 12, top: '8%', left: '60%', rotate: 10, delay: -4 },
-  { type: 'circle', color: '#72D4E8', size: 16, top: '50%', left: '45%', rotate: 0, delay: -6 },
-  { type: 'circle', color: '#E85C6A', size: 10, top: '92%', left: '55%', rotate: 15, delay: -8 },
-  // triangles
-  { type: 'triangle', color: '#9B8ED4', size: 22, top: '20%', left: '85%', rotate: -12, delay: -3 },
-  { type: 'triangle', color: '#7ECFC4', size: 20, top: '40%', left: '92%', rotate: 15, delay: -5 },
-  { type: 'triangle', color: '#FAE8B4', size: 24, top: '30%', left: '3%', rotate: -20, delay: -1 },
-  { type: 'triangle', color: '#F0876B', size: 16, top: '68%', left: '18%', rotate: 8, delay: -7 },
-  // stars
-  { type: 'star', color: '#72D4E8', size: 16, top: '60%', left: '5%', rotate: 20, delay: -7 },
-  { type: 'star', color: '#E85C6A', size: 15, top: '88%', left: '12%', rotate: -3, delay: -9 },
-  { type: 'star', color: '#9B8ED4', size: 13, top: '15%', left: '40%', rotate: 12, delay: -2 },
-  // diamonds
-  { type: 'diamond', color: '#E97BAD', size: 14, top: '55%', left: '72%', rotate: 45, delay: -4 },
-  { type: 'diamond', color: '#7261B8', size: 18, top: '82%', left: '38%', rotate: 30, delay: -6 },
-  { type: 'diamond', color: '#FAE8B4', size: 12, top: '10%', left: '75%', rotate: 60, delay: -1 },
-  // rings
-  { type: 'ring', color: '#7ECFC4', size: 20, top: '35%', left: '55%', rotate: 0, delay: -3 },
-  { type: 'ring', color: '#F5A47A', size: 16, top: '70%', left: '65%', rotate: 10, delay: -8 },
-  // plus/cross
-  { type: 'plus', color: '#E85C6A', size: 14, top: '25%', left: '22%', rotate: 15, delay: -5 },
-  { type: 'plus', color: '#72D4E8', size: 18, top: '78%', left: '80%', rotate: -10, delay: -2 },
-  { type: 'plus', color: '#9B8ED4', size: 12, top: '45%', left: '15%', rotate: 25, delay: -7 },
+const shapeTemplates = [
+  { type: 'circle', color: '#E97BAD', size: 18 },
+  { type: 'circle', color: '#F5A47A', size: 14 },
+  { type: 'circle', color: '#7261B8', size: 12 },
+  { type: 'circle', color: '#72D4E8', size: 16 },
+  { type: 'circle', color: '#E85C6A', size: 10 },
+  { type: 'triangle', color: '#9B8ED4', size: 22 },
+  { type: 'triangle', color: '#7ECFC4', size: 20 },
+  { type: 'triangle', color: '#FAE8B4', size: 24 },
+  { type: 'triangle', color: '#F0876B', size: 16 },
+  { type: 'star', color: '#72D4E8', size: 16 },
+  { type: 'star', color: '#E85C6A', size: 15 },
+  { type: 'star', color: '#9B8ED4', size: 13 },
+  { type: 'diamond', color: '#E97BAD', size: 14 },
+  { type: 'diamond', color: '#7261B8', size: 18 },
+  { type: 'diamond', color: '#FAE8B4', size: 12 },
+  { type: 'ring', color: '#7ECFC4', size: 20 },
+  { type: 'ring', color: '#F5A47A', size: 16 },
+  { type: 'plus', color: '#E85C6A', size: 14 },
+  { type: 'plus', color: '#72D4E8', size: 18 },
+  { type: 'plus', color: '#9B8ED4', size: 12 },
 ]
+
+function randomBetween(min: number, max: number) {
+  return Math.random() * (max - min) + min
+}
+
+function generateShapes() {
+  return shapeTemplates.map((t) => ({
+    ...t,
+    top: `${randomBetween(3, 95)}%`,
+    left: `${randomBetween(3, 95)}%`,
+    rotate: Math.round(randomBetween(-180, 180)),
+    delay: Math.round(randomBetween(-10, 0)),
+    driftX: Math.round(randomBetween(-25, 25)),
+    driftY: Math.round(randomBetween(-20, 20)),
+    duration: +(randomBetween(7, 14)).toFixed(1),
+  }))
+}
 
 function ShapeSvg({ type, color, size }: { type: string; color: string; size: number }) {
   if (type === 'circle') {
@@ -75,6 +87,12 @@ function ShapeSvg({ type, color, size }: { type: string; color: string; size: nu
 }
 
 export default function DecorativeShapes() {
+  const shapesRef = useRef<ReturnType<typeof generateShapes> | null>(null)
+  if (!shapesRef.current) {
+    shapesRef.current = generateShapes()
+  }
+  const shapes = shapesRef.current
+
   return (
     <div className="decorative-shapes" aria-hidden="true">
       {shapes.map((s, i) => (
@@ -86,6 +104,9 @@ export default function DecorativeShapes() {
             left: s.left,
             '--shape-rotate': `${s.rotate}deg`,
             '--shape-delay': `${s.delay}s`,
+            '--shape-drift-x': `${s.driftX}px`,
+            '--shape-drift-y': `${s.driftY}px`,
+            '--shape-duration': `${s.duration}s`,
           } as React.CSSProperties}
         >
           <ShapeSvg type={s.type} color={s.color} size={s.size} />
