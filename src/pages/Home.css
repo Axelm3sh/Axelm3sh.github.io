@@ -197,7 +197,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--mint-haze);
+  color: var(--mint-haze-text);
 }
 
 .no-posts {

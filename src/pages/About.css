@@ -51,7 +51,7 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 1rem;
-  color: var(--accent-blush);
+  color: var(--accent-blush-text);
 }
 
 .skill-category ul {

@@ -13,11 +13,14 @@
   --mint-haze: #7ECFC4;
   --salmon-dusk: #F0876B;
   --punch-coral: #E85C6A;
-  --deep-grape: #7261B8;
+  --deep-grape: #6555A5;
+  /* WCAG text-safe variants for small text on --page-bg */
+  --accent-blush-text: #AD4468;
+  --mint-haze-text: #2A7568;
   --surface-white: #F4F0F8;
   --chrome-border: #D46FAA;
   --text-primary: #3D2E5C;
-  --text-secondary: #6B5B8D;
+  --text-secondary: #5F4F80;
 }
 
 * {
