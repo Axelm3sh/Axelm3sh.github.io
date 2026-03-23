@@ -25,7 +25,7 @@ const About = () => {
             <h2>Skills</h2>
             <Divider width="30%" />
             <div className="skills-grid">
-              <GlassPanel className="skill-category" halftone={{ size: 'sm', color: 'blush' }}>
+              <GlassPanel className="skill-category" halftone={{ size: 'lg', color: 'blush', opacity: 0.35, angle: 30, pattern: "stipple" }}>
                 <h3>Programming Languages</h3>
                 <ul>
                   <li>C++ (started here)</li>
@@ -37,7 +37,7 @@ const About = () => {
                   <li>Python</li>
                 </ul>
               </GlassPanel>
-              <GlassPanel className="skill-category" halftone={{ size: 'sm', color: 'cyan' }}>
+              <GlassPanel className="skill-category" halftone={{ size: 'lg', color: 'cyan', opacity: 0.35, angle: 25, pattern: "lines" }}>
                 <h3>Frameworks & Libraries</h3>
                 <ul>
                   <li>.NET Core</li>
@@ -45,7 +45,7 @@ const About = () => {
                   <li>React</li>
                 </ul>
               </GlassPanel>
-              <GlassPanel className="skill-category" halftone={{ size: 'sm', color: 'gold' }}>
+              <GlassPanel className="skill-category" halftone={{ size: 'lg', color: 'gold', opacity: 0.35, angle: 35, pattern: "dots" }}>
                 <h3>Tools & Technologies</h3>
                 <ul>
                   <li>Jetbrains Rider</li>
