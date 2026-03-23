@@ -1,0 +1,50 @@
+.window-chrome {
+  border: 2px solid var(--chrome-border);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 rgba(114, 97, 184, 0.2);
+  overflow: hidden;
+  background: var(--surface-white);
+}
+
+.window-chrome__titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(90deg, #E97BAD, #9B8ED4);
+  min-height: 36px;
+}
+
+.window-chrome__dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.window-chrome__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.window-chrome__dot--close { background: #ff5f57; }
+.window-chrome__dot--minimize { background: #febc2e; }
+.window-chrome__dot--maximize { background: #28c840; }
+
+.window-chrome__title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-chrome__body {
+  position: relative;
+  isolation: isolate;
+  padding: 1.5rem;
+}

@@ -1,0 +1,26 @@
+.decorative-shapes {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.decorative-shape {
+  position: absolute;
+  transform: rotate(var(--shape-rotate));
+  animation: shape-float 8s ease-in-out var(--shape-delay) infinite alternate;
+  opacity: 0.7;
+}
+
+@keyframes shape-float {
+  0% {
+    transform: rotate(var(--shape-rotate));
+  }
+  50% {
+    transform: rotate(calc(var(--shape-rotate) + 3deg));
+  }
+  100% {
+    transform: rotate(calc(var(--shape-rotate) - 3deg));
+  }
+}
