@@ -1,6 +1,13 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 
+// Polyfill ResizeObserver for jsdom
+globalThis.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
+
 // Mock the import.meta.glob functionality used in blog.ts
 vi.mock('import.meta.glob', () => {
   return {
