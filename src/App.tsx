@@ -37,7 +37,7 @@ function App() {
         >
           <h1>Loading...</h1>
         </motion.div>
-        <BouncyBeachBall duration={1.8} />
+        <BouncyBeachBall speed={400} />
       </div>
     )
   }

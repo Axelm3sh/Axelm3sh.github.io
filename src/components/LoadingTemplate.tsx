@@ -22,7 +22,7 @@ const LoadingTemplate = ({
       <WindowChrome title="loading...">
         <div className="loading-template__body">
           <p className="loading-template__message">{message}</p>
-          <BouncyBeachBall duration={3} />
+          <BouncyBeachBall speed={250} />
         </div>
       </WindowChrome>
     </motion.div>

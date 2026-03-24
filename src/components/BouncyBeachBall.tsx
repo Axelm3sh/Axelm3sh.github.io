@@ -1,17 +1,34 @@
-import { useId } from 'react'
+import { useId, useRef, useLayoutEffect } from 'react'
 import './BouncyBeachBall.css'
 
 interface BouncyBeachBallProps {
-  duration?: number // seconds
+  speed?: number // pixels per second
 }
 
-export default function BouncyBeachBall({ duration = 2 }: BouncyBeachBallProps) {
+export default function BouncyBeachBall({ speed = 400 }: BouncyBeachBallProps) {
   const clipId = useId()
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    function updateAnimation() {
+      if (!containerRef.current) return
+      const width = containerRef.current.offsetWidth
+      const travelDistance = width + 160
+      const duration = travelDistance / speed
+      const degrees = (travelDistance / (Math.PI * 64)) * 360
+      containerRef.current.style.setProperty('--roll-duration', `${duration}s`)
+      containerRef.current.style.setProperty('--roll-degrees', `${degrees}deg`)
+    }
+    updateAnimation()
+    const observer = new ResizeObserver(updateAnimation)
+    if (containerRef.current) observer.observe(containerRef.current)
+    return () => observer.disconnect()
+  }, [speed])
 
   return (
     <div
+      ref={containerRef}
       className="beach-ball-container"
-      style={{ '--roll-duration': `${duration}s` } as React.CSSProperties}
     >
       <div className="beach-ball-travel">
         <svg
