@@ -49,6 +49,7 @@
 }
 
 .cta-button {
+  display: inline-block; /* inline anchors don't reserve height for vertical padding, causing overlap when stacked */
   font-family: 'Space Mono', monospace;
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
