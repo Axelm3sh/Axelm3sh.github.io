@@ -2,6 +2,12 @@
  * Global halftone texture — applied to the page background only.
  * z-index: 0 keeps it behind .content (z-index: 10).
  * isolation: isolate on .app prevents blend-mode bleed-through.
+ *
+ * The 45° manga screen-tone lattice is built from two radial-gradient
+ * layers offset by half a cell instead of transform: rotate(). Rotating
+ * a fixed full-viewport element leaves untextured corner gaps on
+ * portrait aspect ratios, and scaling it up rasterizes the dots blurry.
+ * The 1.4px→2px stop ramp anti-aliases the dot edges.
  */
 .halftone-overlay {
   position: fixed;
@@ -9,11 +15,9 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0.14;
-  background-image: radial-gradient(
-    circle,
-    rgba(60, 40, 80, 0.45) 1.6px,
-    transparent 1.6px
-  );
-  background-size: 7px 7px;
-  transform: rotate(45deg) scale(1.5);
+  background-image:
+    radial-gradient(circle, rgba(60, 40, 80, 0.45) 1.4px, transparent 2px),
+    radial-gradient(circle, rgba(60, 40, 80, 0.45) 1.4px, transparent 2px);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
 }
