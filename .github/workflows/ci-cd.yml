@@ -1,10 +1,10 @@
-# Modern workflow for deploying React app to GitHub Pages
+# Build/test on master and release; deploy to GitHub Pages from release only
 name: Deploy React App to Pages
 
 on:
-  # Runs on pushes targeting the release branch
+  # Build + test on master; build + test + deploy on release
   push:
-    branches: ['release']
+    branches: ['master', 'release']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,21 +15,17 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# Allow one concurrent run per branch so a master build can't cancel a release deploy
 concurrency:
-  group: 'pages'
+  group: 'pages-${{ github.ref }}'
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Node
         uses: actions/setup-node@v6
@@ -59,14 +55,24 @@ jobs:
           fi
           echo "Build validation successful"
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v6
-
       - name: Upload artifact
+        if: github.ref == 'refs/heads/release' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-pages-artifact@v5
         with:
           # Upload dist repository
           path: './dist'
+
+  deploy:
+    # Deploy only from release pushes or a manual dispatch
+    if: github.ref == 'refs/heads/release' || github.event_name == 'workflow_dispatch'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
 
       - name: Deploy to GitHub Pages
         id: deployment
