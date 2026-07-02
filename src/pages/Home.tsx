@@ -93,7 +93,7 @@ const Home = () => {
               rel="noopener noreferrer"
               className="featured-item"
             >
-              <Halftone size="sm" color="blush" pattern={"crosshatch"} />
+              <Halftone size="sm" color="blush" pattern={"crosshatch"} opacity={0.35} />
               <div className="featured-image">
                 <span className="featured-emoji">🎒</span>
               </div>

@@ -26,3 +26,10 @@
                translate(calc(var(--shape-drift-x, 15px) * -1), calc(var(--shape-drift-y, 10px) * -1));
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .decorative-shape {
+    animation: none;
+    transform: rotate(var(--shape-rotate));
+  }
+}

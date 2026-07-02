@@ -93,6 +93,28 @@
   margin-bottom: 1.5rem;
 }
 
+.blog-post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.blog-post-content table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-content th,
+.blog-post-content td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(114, 97, 184, 0.2);
+  text-align: left;
+}
+
 .blog-post-content a {
   color: var(--accent-blush-text);
   text-decoration: underline;
@@ -174,7 +196,7 @@
   color: var(--deep-grape);
   border: 2px solid var(--chrome-border);
   padding: 0.5rem 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;

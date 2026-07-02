@@ -90,7 +90,7 @@
   background: linear-gradient(135deg, var(--accent-blush), var(--cool-lavender));
   color: white;
   padding: 0.8rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -110,6 +110,12 @@
 @keyframes blink-404 {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .log-blink {
+    animation: none;
+  }
 }
 
 @media (max-width: 768px) {

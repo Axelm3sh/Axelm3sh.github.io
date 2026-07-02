@@ -50,3 +50,21 @@
   to   { left: calc(100vw + 87px); }
 }
 
+/* Freeze the roll and park the ball centered instead of off-screen at -80px */
+@media (prefers-reduced-motion: reduce) {
+  .beach-ball-travel {
+    animation: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .beach-ball {
+    animation: none;
+  }
+
+  .beach-ball-shadow {
+    animation: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

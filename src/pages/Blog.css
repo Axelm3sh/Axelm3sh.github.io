@@ -90,7 +90,7 @@
   background: linear-gradient(135deg, var(--accent-blush), var(--cool-lavender));
   color: white !important;
   text-decoration: none !important;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: 'Space Mono', monospace;
   font-size: 0.8rem;
   font-weight: 700;
