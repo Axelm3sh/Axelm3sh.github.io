@@ -3,8 +3,9 @@
     "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": [],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "skipLibCheck": false,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -24,11 +25,9 @@
     "noUncheckedIndexedAccess": true,
     "noUncheckedSideEffectImports": true,
     "erasableSyntaxOnly": true,
-
-    /* Paths */
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "noImplicitReturns": true,
+    "exactOptionalPropertyTypes": true,
+    "allowUnreachableCode": false
   },
   "include": ["src"]
 }

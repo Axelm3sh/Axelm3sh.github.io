@@ -4,7 +4,7 @@
     "lib": ["ES2022"],
     "types": ["node"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "skipLibCheck": false,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -18,7 +18,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "erasableSyntaxOnly": true
+    "erasableSyntaxOnly": true,
+    "noImplicitReturns": true,
+    "exactOptionalPropertyTypes": true,
+    "allowUnreachableCode": false
   },
   "include": ["vite.config.ts"]
 }

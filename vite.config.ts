@@ -1,16 +1,10 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'node:path'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(import.meta.dirname, './src'),
-    },
-  },
   base: '/', // Set the base path for GitHub Pages
   build: {
     outDir: 'dist',
@@ -28,6 +22,8 @@ export default defineConfig({
           if (id.includes('node_modules/react-markdown') || id.includes('node_modules/remark-gfm')) {
             return 'markdown'
           }
+          // undefined = let Rolldown decide
+          return undefined
         },
       },
     },
