@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
-import { getPostBySlug, BlogPost as BlogPostType } from '../utils/blog';
+import { getPostBySlug, type BlogPost as BlogPostType } from '../utils/blog';
 import WindowChrome from '../components/WindowChrome';
 import LoadingTemplate from '../components/LoadingTemplate';
 import Divider from '../components/Divider';

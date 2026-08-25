@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getAllPosts, BlogPost as BlogPostType } from '../utils/blog'
+import { getAllPosts, type BlogPost as BlogPostType } from '../utils/blog'
 import WindowChrome from '../components/WindowChrome'
 import GlassPanel from '../components/GlassPanel'
 import LoadingTemplate from '../components/LoadingTemplate'

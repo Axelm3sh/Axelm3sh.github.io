@@ -59,8 +59,8 @@ export const scrambleText = (options: ScrambleOptions) => {
 
   // Function to get a random character from translations
   const getRandomTranslationChar = (position: number) => {
-    const randomTranslation = helloWorldTranslations[Math.floor(Math.random() * helloWorldTranslations.length)];
-    return position < randomTranslation.length ? randomTranslation[position] : getRandomChar();
+    const randomTranslation = helloWorldTranslations[Math.floor(Math.random() * helloWorldTranslations.length)] ?? '';
+    return randomTranslation[position] ?? getRandomChar();
   };
 
   // Start the animation

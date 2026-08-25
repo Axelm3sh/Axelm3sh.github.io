@@ -17,16 +17,15 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; content
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!match) return { data: {}, content: raw };
 
-  const yaml = match[1];
-  const content = match[2];
+  const [, yaml = '', content = ''] = match;
   const data: Record<string, unknown> = {};
 
   for (const line of yaml.split(/\r?\n/)) {
     const kv = line.match(/^(\w+):\s*(.+)$/);
     if (!kv) continue;
 
-    const key = kv[1];
-    let val: unknown = kv[2].trim();
+    const [, key = '', rawVal = ''] = kv;
+    let val: unknown = rawVal.trim();
 
     // Handle JSON-style arrays: ["a", "b", "c"]
     if (typeof val === 'string' && val.startsWith('[')) {
