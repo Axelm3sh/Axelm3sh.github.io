@@ -9,23 +9,26 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+# Least privilege by default; the deploy job re-grants only what it needs
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Allow one concurrent run per branch so a master build can't cancel a release deploy
 concurrency:
   group: 'pages-${{ github.ref }}'
-  cancel-in-progress: true
+  # Never cancel an in-flight release deploy; superseding master builds are fine to drop
+  cancel-in-progress: ${{ github.ref != 'refs/heads/release' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # Don't leave the GITHUB_TOKEN in .git/config where build tooling could read it
+          persist-credentials: false
 
       - name: Set up Node
         uses: actions/setup-node@v7
@@ -66,10 +69,14 @@ jobs:
     # Deploy only from release pushes or a manual dispatch
     if: github.ref == 'refs/heads/release' || github.event_name == 'workflow_dispatch'
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v6
