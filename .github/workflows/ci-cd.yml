@@ -6,6 +6,10 @@ on:
   push:
     branches: ['master', 'release']
 
+  # Build + test every PR (incl. Dependabot) before it can be merged
+  pull_request:
+    branches: ['master', 'release']
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
