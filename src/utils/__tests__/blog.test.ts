@@ -80,22 +80,22 @@ describe('Blog Utility Functions', () => {
       expect(posts.length).toBe(2);
 
       // Check that posts are sorted by date (newest first)
-      expect(posts[0].slug).toBe('test-post'); // 2025-06-19
-      expect(posts[1].slug).toBe('hello-world'); // 2025-06-18
+      expect(posts[0]!.slug).toBe('test-post'); // 2025-06-19
+      expect(posts[1]!.slug).toBe('hello-world'); // 2025-06-18
 
       // Check that the post data is correctly parsed
-      expect(posts[0].title).toBe('Test Post');
-      expect(posts[0].date).toBe('2025-06-19');
-      expect(posts[0].excerpt).toBe('This is a test post for unit testing.');
-      expect(posts[0].tags).toEqual(['Testing', 'React']);
-      expect(posts[0].content).toContain('# Test Post');
+      expect(posts[0]!.title).toBe('Test Post');
+      expect(posts[0]!.date).toBe('2025-06-19');
+      expect(posts[0]!.excerpt).toBe('This is a test post for unit testing.');
+      expect(posts[0]!.tags).toEqual(['Testing', 'React']);
+      expect(posts[0]!.content).toContain('# Test Post');
 
-      expect(posts[1].title).toBe('Hello World: Blog is up and running!');
-      expect(posts[1].date).toBe('2025-06-18');
-      expect(posts[1].lastUpdated).toBe('2025-06-20');
-      expect(posts[1].excerpt).toContain('This is the first post in what I hope is a working blog architecture');
-      expect(posts[1].tags).toEqual(['Web Development', 'React', 'Introduction']);
-      expect(posts[1].content).toContain('# My First Blog Post');
+      expect(posts[1]!.title).toBe('Hello World: Blog is up and running!');
+      expect(posts[1]!.date).toBe('2025-06-18');
+      expect(posts[1]!.lastUpdated).toBe('2025-06-20');
+      expect(posts[1]!.excerpt).toContain('This is the first post in what I hope is a working blog architecture');
+      expect(posts[1]!.tags).toEqual(['Web Development', 'React', 'Introduction']);
+      expect(posts[1]!.content).toContain('# My First Blog Post');
     });
 
     it('handles posts with missing tags by providing an empty array', () => {

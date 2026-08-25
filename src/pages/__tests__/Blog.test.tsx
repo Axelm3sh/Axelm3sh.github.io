@@ -97,7 +97,7 @@ describe('Blog Component', () => {
 
     // Check that error was logged
     expect(consoleErrorSpy).toHaveBeenCalled();
-    expect(consoleErrorSpy.mock.calls[0][0]).toContain('Error loading blog posts:');
+    expect(consoleErrorSpy.mock.calls[0]?.[0]).toContain('Error loading blog posts:');
 
     // Check that the "No blog posts found" message is displayed
     expect(screen.getByText('No blog posts found.')).toBeInTheDocument();

@@ -1,5 +1,9 @@
-import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import '@testing-library/jest-dom/vitest';
+import { cleanup } from '@testing-library/react';
+import { afterEach, vi } from 'vitest';
+
+// RTL only auto-registers cleanup when Vitest globals are on; register it explicitly.
+afterEach(cleanup);
 
 // Polyfill ResizeObserver for jsdom
 globalThis.ResizeObserver = class ResizeObserver {
