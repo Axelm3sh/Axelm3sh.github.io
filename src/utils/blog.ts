@@ -60,20 +60,46 @@ export function resetBlogFiles() {
   blogFiles = defaultBlogFiles;
 }
 
+/**
+ * Build a BlogPost from parsed frontmatter, or null if the required string
+ * fields are missing. Frontmatter is untrusted input, so this validates rather
+ * than asserting — a blanket `as BlogPost` would let `undefined` through typed
+ * as `string`.
+ */
+function toBlogPost(
+  slug: string,
+  data: Record<string, unknown>,
+  content: string,
+): BlogPost | null {
+  const { title, date, excerpt, lastUpdated, tags } = data;
+
+  if (typeof title !== 'string' || typeof date !== 'string' || typeof excerpt !== 'string') {
+    return null;
+  }
+
+  return {
+    slug,
+    title,
+    date,
+    // exactOptionalPropertyTypes: omit the key entirely rather than set undefined
+    ...(typeof lastUpdated === 'string' ? { lastUpdated } : {}),
+    excerpt,
+    tags: Array.isArray(tags) ? tags.filter((tag): tag is string => typeof tag === 'string') : [],
+    content,
+  };
+}
+
 export function getAllPosts(): BlogPost[] {
-  const allPostsData = Object.entries(blogFiles).map(([filePath, content]) => {
+  const allPostsData = Object.entries(blogFiles).flatMap(([filePath, content]) => {
     const slug = filePath.replace('/content/blog/', '').replace('.md', '');
     const { data, content: markdownContent } = parseFrontmatter(content as string);
 
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      lastUpdated: data.lastUpdated,
-      excerpt: data.excerpt,
-      tags: (data.tags as string[]) || [],
-      content: markdownContent,
-    } as BlogPost;
+    const post = toBlogPost(slug, data, markdownContent);
+    if (!post) {
+      console.error('Skipping blog post with incomplete frontmatter: %s', slug);
+      return [];
+    }
+    return [post];
   });
 
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -82,24 +108,21 @@ export function getAllPosts(): BlogPost[] {
 export function getPostBySlug(slug: string): BlogPost | null {
   try {
     const filePath = `/content/blog/${slug}.md`;
-    const content = blogFiles[filePath] as string;
+    const content = blogFiles[filePath];
 
-    if (!content) {
+    if (typeof content !== 'string' || !content) {
       console.error(`Blog post with slug %s not found`, slug);
       return null;
     }
 
     const { data, content: markdownContent } = parseFrontmatter(content);
 
-    return {
-      slug,
-      title: data.title,
-      date: data.date,
-      lastUpdated: data.lastUpdated,
-      excerpt: data.excerpt,
-      tags: (data.tags as string[]) || [],
-      content: markdownContent,
-    } as BlogPost;
+    const post = toBlogPost(slug, data, markdownContent);
+    if (!post) {
+      console.error('Blog post with slug %s has incomplete frontmatter', slug);
+      return null;
+    }
+    return post;
   } catch (error) {
     console.error('Error getting post with slug %s:', slug, error);
     return null;
